@@ -64,7 +64,7 @@ function removeTrackedFiles(projectRoot, files) {
 }
 
 function stripRules(projectRoot) {
-  const claudeMdPath = path.join(projectRoot, 'CLAUDE.md');
+  const claudeMdPath = path.join(projectRoot, 'CODEXAI.md');
 
   if (!fs.existsSync(claudeMdPath)) return;
 
@@ -80,17 +80,17 @@ function stripRules(projectRoot) {
 
   if (content.trim() === '') {
     fs.unlinkSync(claudeMdPath);
-    console.log('  Removed CLAUDE.md (was empty after stripping pack rules).');
+    console.log('  Removed CODEXAI.md (was empty after stripping pack rules).');
   } else {
     fs.writeFileSync(claudeMdPath, content);
-    console.log('  Stripped pack rules from CLAUDE.md.');
+    console.log('  Stripped pack rules from CODEXAI.md.');
   }
 }
 
 function cleanEmptyDirs(projectRoot) {
   const dirs = [
-    path.join(projectRoot, '.claude', 'commands'),
-    path.join(projectRoot, '.claude', 'skills')
+    path.join(projectRoot, '.codexai', 'commands'),
+    path.join(projectRoot, '.codexai', 'skills')
   ];
 
   for (const dir of dirs) {
@@ -112,7 +112,7 @@ function main() {
     process.exit(1);
   }
 
-  const manifestPath = path.join(projectRoot, '.claude', '.ai-toolkit-manifest.json');
+  const manifestPath = path.join(projectRoot, '.codexai', '.ai-toolkit-manifest.json');
 
   if (!fs.existsSync(manifestPath)) {
     console.log(`[${PACKAGE_NAME}] No manifest found at ${manifestPath}. Nothing to uninstall.`);
@@ -122,11 +122,11 @@ function main() {
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
   console.log(`[${PACKAGE_NAME}] Uninstalling from ${projectRoot}...`);
 
-  // Remove tracked files (excluding CLAUDE.md, handled separately)
-  const filesToRemove = manifest.files.filter(f => f !== 'CLAUDE.md');
+  // Remove tracked files (excluding CODEXAI.md, handled separately)
+  const filesToRemove = manifest.files.filter(f => f !== 'CODEXAI.md');
   removeTrackedFiles(projectRoot, filesToRemove);
 
-  // Strip rules from CLAUDE.md
+  // Strip rules from CODEXAI.md
   stripRules(projectRoot);
 
   // Remove manifest

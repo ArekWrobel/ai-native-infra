@@ -10,21 +10,21 @@ This repository accompanies the **"Od chaosu do AI-Native Infrastructure"** webi
 |------|-----------|-------------|
 | 1 | **Agent Skill** | A code review skill (`SKILL.md`) based on team conventions, following the [Agent Skills Open Standard](https://agentskills.io) |
 | 2 | **Extension Pack** | An npm package (`@10xdevs/ai-toolkit`) bundling skills, commands, and AI rules with smart installation |
-| 3 | **Private Registry** | AWS CodeArtifact provisioned via Terraform — a managed npm registry with two-repo pattern |
-| 4 | **CI/CD Pipeline** | GitHub Actions workflow with OIDC auth for automated validation and publishing |
+| 3 | **Private Registry** | OVH private npm registry coordinates managed via Terraform |
+| 4 | **CI/CD Pipeline** | GitHub Actions workflow for automated validation and publishing |
 | 5 | **Team Installation** | One-command setup for any developer, in any project type |
 
 ## Architecture
 
 ```
-Team Conventions          Private Registry (AWS CodeArtifact)
+Team Conventions                Private Registry (OVH npm)
        │                         ▲            │
        ▼                         │            ▼
   Agent Skill ──► Extension Pack ──► npm publish    npm install / npx install
   (SKILL.md)     (pack.yaml)     │                         │
                                  │                         ▼
-                            CI/CD Gate              .claude/skills/
-                         (GitHub Actions)           .claude/commands/
+                            CI/CD Gate              .codexai/skills/
+                         (GitHub Actions)           .codexai/commands/
 ```
 
 ### Two Installation Modes
@@ -32,7 +32,7 @@ Team Conventions          Private Registry (AWS CodeArtifact)
 - **JS/TS projects**: `npm install @10xdevs/ai-toolkit` — postinstall creates symlinks
 - **Any project** (Python, Go, Rust...): `npx @10xdevs/ai-toolkit install` — copies files, no `package.json` needed
 
-Both modes install into the project's `.claude/` directory and track state via a manifest for clean uninstall.
+Both modes install into the project's `.codexai/` directory and track state via a manifest for clean uninstall.
 
 ## Repository Structure
 
@@ -49,7 +49,7 @@ packages/ai-toolkit/    # The Extension Pack (npm package)
   install.js            # Dual-mode installer (symlink/copy)
   bin/cli.js            # CLI for npx usage
 skills/                 # Project-level skills
-terraform/              # IaC for AWS CodeArtifact registry
+terraform/              # IaC for OVH npm registry configuration
 .github/workflows/      # CI/CD pipeline
 ```
 
@@ -68,9 +68,9 @@ The repo has tagged branches for each stage of the build, so you can jump to any
 ## Key Technologies
 
 - **Agent Skills** — open standard for AI tool extensions ([agentskills.io](https://agentskills.io))
-- **AWS CodeArtifact** — managed npm registry with two-repo pattern (private + public proxy)
-- **Terraform** (>= 1.10) — IaC with S3 remote state and native locking (no DynamoDB)
-- **GitHub Actions** — OIDC federation with AWS (zero long-lived credentials)
+- **OVHcloud** — private npm registry hosting
+- **Terraform** (>= 1.10) — IaC for registry configuration and outputs
+- **GitHub Actions** — CI validation and token-based publishing
 
 ## Quick Start
 
