@@ -1,0 +1,4 @@
+interface:
+  display_name: "arc42 Documentation"
+  short_description: "Generate evidence-based arc42 docs"
+  default_prompt: "Use $generate-arc42-documentation to draft arc42 documentation from this repository."

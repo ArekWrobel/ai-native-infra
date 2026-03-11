@@ -1,0 +1,4 @@
+interface:
+  display_name: "Documentation Drift"
+  short_description: "Detect mismatches between code and docs"
+  default_prompt: "Use $detect-documentation-drift to compare this repository's docs with its implementation."

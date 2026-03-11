@@ -1,0 +1,4 @@
+interface:
+  display_name: "ADR Generator"
+  short_description: "Draft architecture decision records"
+  default_prompt: "Use $generate-adr to draft an ADR for the decision we discussed."

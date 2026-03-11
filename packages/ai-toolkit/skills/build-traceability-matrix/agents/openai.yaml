@@ -1,0 +1,4 @@
+interface:
+  display_name: "Traceability Matrix"
+  short_description: "Map requirements to BDD, docs, and code"
+  default_prompt: "Use $build-traceability-matrix to generate a requirements traceability matrix for this repository."

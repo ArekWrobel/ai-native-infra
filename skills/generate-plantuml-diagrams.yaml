@@ -1,4 +1,0 @@
-id: generate-plantuml-diagrams
-description: Generate PlantUML diagrams
-outputs:
-  - docs/diagrams

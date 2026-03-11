@@ -1,7 +1,0 @@
-id: adr-agent
-name: ADR Agent
-role: Generate architecture decision records
-inputs:
-  - architecture_model
-outputs:
-  - adr_records

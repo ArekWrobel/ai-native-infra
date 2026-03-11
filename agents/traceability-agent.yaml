@@ -1,5 +1,0 @@
-id: traceability-agent
-name: Traceability Agent
-role: Create RTM mapping between requirements, BDD, code, and architecture
-outputs:
-  - docs/traceability/rtm.md

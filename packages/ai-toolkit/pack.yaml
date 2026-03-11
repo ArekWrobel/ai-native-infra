@@ -5,12 +5,27 @@ namespace: 10xdevs
 license: MIT
 
 skills:
+  - build-traceability-matrix
   - code-review
+  - detect-documentation-drift
+  - extract-behaviors-from-bdd
+  - generate-adr
+  - generate-arc42-documentation
+  - generate-c4-model
+  - generate-plantuml-diagrams
 
 commands: []
 
 presets:
   default:
     description: "Full toolkit"
-    skills: [code-review]
+    skills:
+      - build-traceability-matrix
+      - code-review
+      - detect-documentation-drift
+      - extract-behaviors-from-bdd
+      - generate-adr
+      - generate-arc42-documentation
+      - generate-c4-model
+      - generate-plantuml-diagrams
     commands: []

@@ -1,6 +1,0 @@
-id: generate-adr
-description: Generate ADR documents
-inputs:
-  - architecture_decisions
-outputs:
-  - docs/adr
