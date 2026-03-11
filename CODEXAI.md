@@ -1,4 +1,4 @@
-# CLAUDE.md
+# CODEXAI.md
 
 This project demonstrates building AI-Native infrastructure from scratch.
 We're creating an Extension Pack for distributing Agent Skills across a development team.

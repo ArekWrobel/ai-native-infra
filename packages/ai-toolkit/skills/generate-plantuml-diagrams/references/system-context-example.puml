@@ -1,0 +1,6 @@
+@startuml
+title System Context
+
+actor Developer
+Developer -> System : triggers documentation generation
+@enduml

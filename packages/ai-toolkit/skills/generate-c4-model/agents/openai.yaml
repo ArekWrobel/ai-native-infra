@@ -1,0 +1,4 @@
+interface:
+  display_name: "C4 Modeling"
+  short_description: "Infer C4 architecture models from code"
+  default_prompt: "Use $generate-c4-model to build a C4 view of this repository."

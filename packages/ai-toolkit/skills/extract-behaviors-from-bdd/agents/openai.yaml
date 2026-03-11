@@ -1,0 +1,4 @@
+interface:
+  display_name: "BDD Behavior Extraction"
+  short_description: "Turn Gherkin features into behavior maps"
+  default_prompt: "Use $extract-behaviors-from-bdd to summarize the runtime behaviors described by these feature files."

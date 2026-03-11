@@ -8,7 +8,6 @@ on:
 
 permissions:
   contents: read
-  id-token: write
 
 jobs:
   validate:
@@ -73,20 +72,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: eu-central-1
-
-      - name: Login to CodeArtifact
+      - name: Configure npm auth for OVH registry
+        env:
+          OVH_NPM_REGISTRY_URL: ${{ secrets.OVH_NPM_REGISTRY_URL }}
+          OVH_NPM_TOKEN: ${{ secrets.OVH_NPM_TOKEN }}
         run: |
-          aws codeartifact login \
-            --tool npm \
-            --domain devs10x \
-            --domain-owner ${{ secrets.AWS_ACCOUNT_ID }} \
-            --repository npm \
-            --region eu-central-1
+          REG_HOST="${OVH_NPM_REGISTRY_URL#https://}"
+          REG_HOST="${REG_HOST#http://}"
+          npm config set registry "${OVH_NPM_REGISTRY_URL}"
+          npm config set "//${REG_HOST}:_authToken" "${OVH_NPM_TOKEN}"
 
       - name: Publish package
         run: npm publish

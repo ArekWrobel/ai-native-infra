@@ -54,7 +54,7 @@ function cleanStaleSymlinks(targetDir) {
 
 function installSkills(projectRoot, installedFiles) {
   const skillsSource = path.join(__dirname, 'skills');
-  const skillsTarget = path.join(projectRoot, '.claude', 'skills');
+  const skillsTarget = path.join(projectRoot, '.codexai', 'skills');
 
   if (!fs.existsSync(skillsSource)) return;
 
@@ -89,7 +89,7 @@ function installSkills(projectRoot, installedFiles) {
 
 function installCommands(projectRoot, installedFiles) {
   const commandsSource = path.join(__dirname, 'commands');
-  const commandsTarget = path.join(projectRoot, '.claude', 'commands');
+  const commandsTarget = path.join(projectRoot, '.codexai', 'commands');
 
   if (!fs.existsSync(commandsSource)) return;
 
@@ -120,13 +120,13 @@ function installCommands(projectRoot, installedFiles) {
 }
 
 function installRules(projectRoot, installedFiles) {
-  const rulesSource = path.join(__dirname, 'rules', 'CLAUDE.md');
+  const rulesSource = path.join(__dirname, 'rules', 'CODEXAI.md');
   if (!fs.existsSync(rulesSource)) return;
 
   const rulesContent = fs.readFileSync(rulesSource, 'utf8').trim();
   const sentinelBlock = `\n${SENTINEL_BEGIN}\n${rulesContent}\n${SENTINEL_END}\n`;
 
-  const claudeMdPath = path.join(projectRoot, 'CLAUDE.md');
+  const claudeMdPath = path.join(projectRoot, 'CODEXAI.md');
 
   if (fs.existsSync(claudeMdPath)) {
     let existing = fs.readFileSync(claudeMdPath, 'utf8');
@@ -146,11 +146,11 @@ function installRules(projectRoot, installedFiles) {
     fs.writeFileSync(claudeMdPath, sentinelBlock.trimStart());
   }
 
-  installedFiles.push('CLAUDE.md');
+  installedFiles.push('CODEXAI.md');
 }
 
 function writeManifest(projectRoot, installedFiles) {
-  const manifestDir = path.join(projectRoot, '.claude');
+  const manifestDir = path.join(projectRoot, '.codexai');
   fs.mkdirSync(manifestDir, { recursive: true });
 
   const manifest = {
