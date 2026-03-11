@@ -1,7 +1,10 @@
-# Terraform
-.terraform/
-*.tfstate
-*.tfstate.backup
-*.tfplan
-
-.claude/
+__pycache__/
+*.pyc
+.venv/
+dist/
+build/
+*.log
+*.tmp
+.idea/
+.vscode/
+agentic-architecture-docs.zip

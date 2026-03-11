@@ -1,0 +1,8 @@
+id: arc42-agent
+name: arc42 Documentation Agent
+role: Generate arc42 architecture documentation
+inputs:
+  - c4_models
+  - adr_records
+outputs:
+  - docs/arc42/*.md

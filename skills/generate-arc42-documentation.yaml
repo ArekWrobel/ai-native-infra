@@ -1,0 +1,7 @@
+id: generate-arc42-documentation
+description: Generate arc42 documentation
+inputs:
+  - c4_models
+  - adr_records
+outputs:
+  - docs/arc42

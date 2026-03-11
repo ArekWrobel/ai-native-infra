@@ -1,0 +1,6 @@
+id: generate-c4-model
+description: Generate C4 architecture model
+inputs:
+  - code_analysis
+outputs:
+  - c4_model

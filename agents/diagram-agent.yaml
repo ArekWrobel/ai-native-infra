@@ -1,0 +1,7 @@
+id: diagram-agent
+name: Diagram Agent
+role: Generate PlantUML diagrams
+inputs:
+  - c4_models
+outputs:
+  - docs/diagrams/*.puml
